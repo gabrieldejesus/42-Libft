@@ -111,3 +111,70 @@ or that are part of it but in a different form.
 | Program name | Prototype                         | Turn in files | Parameters                                                                                                                                     | Return value | External functs. | Description                                           |
 | ------------ | --------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------------- | ----------------------------------------------------- |
 | ft_putnbr_fd | void ft_putnbr_fd(int n, int fd); | -             | n: The integer to output.<br>fd: The file descriptor on which to write.n: The integer to output.<br>fd: The file descriptor on which to write. | None         | write            | Outputs the integer ’n’ to the given file descriptor. |
+
+### Bonus part
+
+If you completed the mandatory part, do not hesitate to go further by doing this extra
+one. It will bring bonus points if passed successfully.
+
+Functions to manipulate memory and strings is very useful. But you will soon discover
+that manipulating lists is even more useful.
+
+You have to use the following structure to represent a node of your list. Add its
+declaration to your libft.h file:
+
+```c
+typedef struct  s_list
+{
+  void          *content;
+  struct s_list *next;
+}               t_list;
+```
+
+The members of the **t_list** struct are:
+
+- content: The data contained in the node.<br>
+  - **void \*** allows to store any kind of data.
+- next: The address of the next node, or NULL if the next node is the last one.
+
+In your Makefile, add a make bonus rule to add the bonus functions to your libft.a.
+
+> The bonus part will only be assessed if the mandatory part is PERFECT. Perfect means the mandatory part has been integrally done and works without malfunctioning. If you have not passed ALL the mandatory requirements, your bonus part will not be evaluated at all.
+
+Implement the following functions in order to easily use your lists.
+
+| Program name | Prototype                         | Turn in files | Parameters                                    | Return value | External functs. | Description                                                                                                                                                                            |
+| ------------ | --------------------------------- | ------------- | --------------------------------------------- | ------------ | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ft_lstnew    | t_list *ft_lstnew(void *content); | -             | content: The content to create the node with. | The new node | malloc           | Allocates (with malloc(3)) and returns a new node. The member variable ’content’ is initialized with the value of the parameter ’content’. The variable ’next’ is initialized to NULL. |
+
+| Program name    | Prototype                                         | Turn in files | Parameters                                                                                                                       | Return value | External functs. | Description                                       |
+| --------------- | ------------------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------------- | ------------------------------------------------- |
+| ft_lstadd_front | void ft_lstadd_front(t_list \**lst, t_list *new); | -             | lst: The address of a pointer to the first link of a list.<br>new: The address of a pointer to the node to be added to the list. | None         | None             | Adds the node ’new’ at the beginning of the list. |
+
+| Program name | Prototype                     | Turn in files | Parameters                      | Return value           | External functs. | Description                           |
+| ------------ | ----------------------------- | ------------- | ------------------------------- | ---------------------- | ---------------- | ------------------------------------- |
+| ft_lstsize   | int ft_lstsize(t_list \*lst); | -             | lst: The beginning of the list. | The length of the list | None             | Counts the number of nodes in a list. |
+
+| Program name | Prototype                        | Turn in files | Parameters                      | Return value          | External functs. | Description                        |
+| ------------ | -------------------------------- | ------------- | ------------------------------- | --------------------- | ---------------- | ---------------------------------- |
+| ft_lstlast   | t_list *ft_lstlast(t_list *lst); | -             | lst: The beginning of the list. | Last node of the list | None             | Returns the last node of the list. |
+
+| Program name   | Prototype                                        | Turn in files | Parameters                                                                                                                       | Return value | External functs. | Description                                 |
+| -------------- | ------------------------------------------------ | ------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------------- | ------------------------------------------- |
+| ft_lstadd_back | void ft_lstadd_back(t_list \**lst, t_list *new); | -             | lst: The address of a pointer to the first link of a list.<br>new: The address of a pointer to the node to be added to the list. | None         | None             | Adds the node ’new’ at the end of the list. |
+
+| Program name | Prototype                                             | Turn in files | Parameters                                                                             | Return value | External functs. | Description                                                                                                                                                                     |
+| ------------ | ----------------------------------------------------- | ------------- | -------------------------------------------------------------------------------------- | ------------ | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ft_lstdelone | void ft_lstdelone(t_list *lst, void (*del)(void \*)); | -             | lst: The node to free.<br>del: The address of the function used to delete the content. | None         | free             | Takes as a parameter a node and frees the memory of the node’s content using the function ’del’ given as a parameter and free the node. The memory of ’next’ must not be freed. |
+
+| Program name | Prototype                                              | Turn in files | Parameters                                                                                                           | Return value | External functs. | Description                                                                                                                                                       |
+| ------------ | ------------------------------------------------------ | ------------- | -------------------------------------------------------------------------------------------------------------------- | ------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ft_lstclear  | void ft_lstclear(t_list \**lst, void (*del)(void \*)); | -             | lst: The address of a pointer to a node.,br>del: The address of the function used to delete the content of the node. | None         | free             | Deletes and frees the given node and every successor of that node, using the function ’del’ and free(3).<br>Finally, the pointer to the list must be set to NULL. |
+
+| Program name | Prototype                                         | Turn in files | Parameters                                                                                              | Return value | External functs. | Description                                                                       |
+| ------------ | ------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------- | ------------ | ---------------- | --------------------------------------------------------------------------------- |
+| ft_lstiter   | void ft_lstiter(t_list *lst, void (*f)(void \*)); | -             | lst: The address of a pointer to a node.<br>f: The address of the function used to iterate on the list. | None         | None             | Iterates the list ’lst’ and applies the function ’f’ on the content of each node. |
+
+| Program name | Prototype                                                                 | Turn in files | Parameters                                                                                                                                                                                  | Return value                                   | External functs. | Description                                                                                                                                                                                                                              |
+| ------------ | ------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ft_lstmap    | t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void \*)); | -             | lst: The address of a pointer to a node.<br>f: The address of the function used to iterate on the list.<br>del: The address of the function used to delete the content of a node if needed. | The new list.<br>NULL if the allocation fails. | malloc, free     | Iterates the list ’lst’ and applies the function ’f’ on the content of each node. Creates a new list resulting of the successive applications of the function ’f’. The ’del’ function is used to delete the content of a node if needed. |
