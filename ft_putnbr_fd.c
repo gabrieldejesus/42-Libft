@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gde-jesu <gde-jesu@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 10:32:45 by gde-jesu          #+#    #+#             */
-/*   Updated: 2023/09/02 15:05:43 by gde-jesu         ###   ########.fr       */
+/*   Created: 2022/06/29 20:56:11 by gde-jesu          #+#    #+#             */
+/*   Updated: 2023/09/02 10:59:12 by gde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_list	*node;
+	unsigned int	nbr;
 
-	node = malloc(sizeof(t_list));
-  if (!node)
-    return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nbr = (unsigned int)(n * -1);
+	}
+	else
+		nbr = (unsigned int)n;
+	if (nbr >= 10)
+		ft_putnbr_fd(nbr / 10, fd);
+	ft_putchar_fd((char)(nbr % 10 + 48), fd);
 }
