@@ -6,7 +6,7 @@
 #    By: gde-jesu <gde-jesu@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 14:50:00 by gde-jesu          #+#    #+#              #
-#    Updated: 2023/09/02 15:41:27 by gde-jesu         ###   ########.fr        #
+#    Updated: 2023/09/02 16:15:48 by gde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,9 @@ ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
 ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
 ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-ft_lstmap.c
+BONUS_SRCS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
+ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c \
+ft_lstmap_bonus.c
 
 # Objects Variables #
 MANDATORY_OBJ = $(MANDATORY_SRCS:.c=.o)
