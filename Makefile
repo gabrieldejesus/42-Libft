@@ -6,7 +6,7 @@
 #    By: gde-jesu <gde-jesu@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 14:50:00 by gde-jesu          #+#    #+#              #
-#    Updated: 2023/09/02 16:15:48 by gde-jesu         ###   ########.fr        #
+#    Updated: 2023/09/16 15:46:31 by gde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = libft.a
 # Compiling Variables #
 CC = cc
 RM = rm -rf
-LIBC = ar -rcs
+ARC = ar -rcs
 CFLAGS = -Wall -Wextra -Werror -c
 
 # Sources Variables #
@@ -33,8 +33,8 @@ ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus
 ft_lstmap_bonus.c
 
 # Objects Variables #
-MANDATORY_OBJ = $(MANDATORY_SRCS:.c=.o)
-BONUS_OBJ = $(BONUS_SRCS:.c=.o)
+MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 # Colors #
 GREEN = \e[32m
@@ -46,18 +46,18 @@ _INFO = ℹ️  $(YELLOW)Info$(RESET)
 # Functions #
 $(NAME):
 	@$(CC) $(CFLAGS) -I. $(MANDATORY_SRCS)
-	@$(LIBC) $(NAME) $(MANDATORY_OBJ)
+	@$(ARC) $(NAME) $(MANDATORY_OBJS)
 	@printf "$(_SUCCESS) is ready.\n"
 
 all: $(NAME)
 
 bonus:
 	@$(CC) $(CFLAGS) -I. $(BONUS_SRCS)
-	@$(LIBC) $(NAME) $(BONUS_OBJ)
+	@$(ARC) $(NAME) $(BONUS_OBJS)
 	@printf "$(_SUCCESS) is ready.\n"
 
 clean:
-		@$(RM) $(MANDATORY_OBJ) $(BONUS_OBJ)
+		@$(RM) $(MANDATORY_OBJS) $(BONUS_OBJS)
 		@printf "$(_INFO) cleaning done.\n"
 
 fclean: clean
