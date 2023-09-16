@@ -6,7 +6,7 @@
 #    By: gde-jesu <gde-jesu@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 14:50:00 by gde-jesu          #+#    #+#              #
-#    Updated: 2023/09/16 15:46:31 by gde-jesu         ###   ########.fr        #
+#    Updated: 2023/09/16 15:50:53 by gde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 GREEN = \e[32m
 YELLOW = \e[33m
 RESET = \e[0m
-_SUCCESS = ✅ $(GREEN)Successfully compiled$(RESET)
-_INFO = ℹ️  $(YELLOW)Info$(RESET)
+_SUCCESS = ✨ $(GREEN)Compiled successfully$(RESET)
+_INFO = 🚀 $(YELLOW)Info$(RESET)
 
 # Functions #
 $(NAME):
@@ -57,11 +57,11 @@ bonus:
 	@printf "$(_SUCCESS) is ready.\n"
 
 clean:
-		@$(RM) $(MANDATORY_OBJS) $(BONUS_OBJS)
-		@printf "$(_INFO) cleaning done.\n"
+	@$(RM) $(MANDATORY_OBJS) $(BONUS_OBJS)
+	@printf "$(_INFO) cleaning done.\n"
 
 fclean: clean
-		@$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
